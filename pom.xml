@@ -12,9 +12,9 @@
 	<artifactId>carWorkshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>carWorkshop</name>
-	<description>API Rest for Mechanical Car Workshopt</description>
+	<description>API Rest for Mechanical Car Workshop</description>
 	<properties>
-		<java.version>22</java.version>
+		<java.version>21</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
