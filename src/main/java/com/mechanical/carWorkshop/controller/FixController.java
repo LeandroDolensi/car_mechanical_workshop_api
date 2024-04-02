@@ -1,8 +1,8 @@
 package com.mechanical.carWorkshop.controller;
 
-import com.mechanical.carWorkshop.dto.MechanicDto;
-import com.mechanical.carWorkshop.model.MechanicModel;
-import com.mechanical.carWorkshop.repository.MechanicRepository;
+import com.mechanical.carWorkshop.dto.FixDto;
+import com.mechanical.carWorkshop.model.FixModel;
+import com.mechanical.carWorkshop.repository.FixRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("mechanic")
-public class MechanicController {
+@RequestMapping("fix")
+public class FixController {
 
     @Autowired
-    private MechanicRepository mechanicRepository;
+    private FixRepository fixRepository;
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody MechanicDto dados){
-        mechanicRepository.save(new MechanicModel(dados));
+    public void cadastrar(@RequestBody FixDto dados){
+        fixRepository.save(new FixModel(dados));
     }
 }
