@@ -1,6 +1,6 @@
 package com.mechanical.carWorkshop.model;
 
-import com.mechanical.carWorkshop.dto.CarDto;
+import com.mechanical.carWorkshop.dto.FixDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -13,24 +13,30 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class CarModel {
+public class FixModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String marca;
+    private String entrada;
 
     @Column(nullable = false)
-    private String modelo;
+    private String saida;
 
+    @Embedded
     @Column(nullable = false)
-    private Integer ano;
+    private MechanicModel mecanico;
 
-    public CarModel(CarDto dados){
-        this.marca = dados.marca();
-        this.modelo = dados.modelo();
-        this.ano = dados.ano();
+    @Embedded
+    @Column(nullable = false)
+    private VehicleModel veiculo;
+
+    public FixModel(FixDto dados) {
+        this.entrada = dados.entrada();
+        this.saida = dados.saida();
+        this.mecanico = new MechanicModel(dados.mecanico());
+        this.veiculo = new VehicleModel(dados.veiculo());
     }
 }
