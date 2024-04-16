@@ -19,7 +19,7 @@ public class VehicleModel {
     private String modelo;
 
     @Column(nullable = false)
-    private Integer ano;
+    private String ano;
 
     public VehicleModel(VehicleDto dados){
         this.marca = dados.marca();

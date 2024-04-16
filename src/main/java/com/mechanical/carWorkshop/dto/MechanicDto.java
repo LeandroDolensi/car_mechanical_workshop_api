@@ -1,4 +1,11 @@
 package com.mechanical.carWorkshop.dto;
 
-public record MechanicDto(String nome, Integer anos_exp) {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public record MechanicDto(@NotNull
+                          @NotBlank
+                          String nome,
+
+                          Integer anos_exp) {
 }
