@@ -10,8 +10,8 @@
 ### Body da Requisição:
 ```
 {
-    "entrada": "xx/xx/xxxx",
-    "saida": "xx/xx/xxxx",
+    "entrada": "dd/mm/aaaa",
+    "saida": "dd/mm/aaaa",
     "mecanico": {
         "nome": "string",
         "anos_exp": 0
@@ -19,20 +19,20 @@
     "veiculo": {
         "marca": "string",
         "modelo": "string",
-        "ano": "xxxx",
+        "ano": "aaaa",
         "cor": "string"
     }
 }
 ```
 
 #### Descrição da Requisição
- - entrada: data de entrada do veículo no formato xx/xx/xxxx
- - saida: data de saída do veículo no formato xx/xx/xxxx
+ - entrada: data de entrada do veículo no formato "dd/mm/aaaa"
+ - saida: data de saída do veículo no formato "dd/mm/aaaa"
  - mecanico.nome: nome do mecânico
  - mecanico.anos_exp: anos de experiência do mecânico
  - veiculo.marca:marca do veículo
  - veiculo.modelo: modelo do veículo
- - veiculo.ano: ano do veículo no formato xxxx
+ - veiculo.ano: ano do veículo no formato "aaaa"
  - veiculo.cor: cor do veículo
 
 #### Campos obrigatórios
@@ -48,8 +48,8 @@
 ### Retorno da requisição
 ```
 {
-    "entrada": "xx/xx/xxxx",
-    "saida": "xx/xx/xxxx",
+    "entrada": "dd/mm/aaaa",
+    "saida": "dd/mm/aaaa",
     "mecanico": {
         "nome": "string",
         "anos_exp": 0
@@ -57,7 +57,7 @@
     "veiculo": {
         "marca": "string",
         "modelo": "string",
-        "ano": "xxxx",
+        "ano": "aaaa",
         "cor": "string"
     }
 }
@@ -67,8 +67,8 @@
 ### Retorno da requisição
 ```
 {
-    "entrada": "xx/xx/xxxx",
-    "saida": "xx/xx/xxxx",
+    "entrada": "dd/mm/aaaa",
+    "saida": "dd/mm/aaaa",
     "mecanico": {
         "nome": "string"
     },
