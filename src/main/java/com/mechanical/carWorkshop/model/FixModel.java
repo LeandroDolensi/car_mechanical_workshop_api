@@ -1,6 +1,6 @@
 package com.mechanical.carWorkshop.model;
 
-import com.mechanical.carWorkshop.dto.FixDto;
+import com.mechanical.carWorkshop.dto.FixRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -33,7 +33,7 @@ public class FixModel {
     @Column(nullable = false)
     private VehicleModel veiculo;
 
-    public FixModel(FixDto dados) {
+    public FixModel(FixRequestDto dados) {
         this.entrada = dados.entrada();
         this.saida = dados.saida();
         this.mecanico = new MechanicModel(dados.mecanico());

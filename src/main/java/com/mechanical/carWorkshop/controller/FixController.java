@@ -1,15 +1,14 @@
 package com.mechanical.carWorkshop.controller;
 
-import com.mechanical.carWorkshop.dto.FixDto;
+import com.mechanical.carWorkshop.dto.FixRequestDto;
 import com.mechanical.carWorkshop.model.FixModel;
 import com.mechanical.carWorkshop.repository.FixRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("fix")
@@ -20,7 +19,17 @@ public class FixController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid FixDto dados){
-        fixRepository.save(new FixModel(dados));
+    public void create(@RequestBody @Valid FixRequestDto fixRequestDto){
+        fixRepository.save(new FixModel(fixRequestDto));
     }
+
+    @GetMapping
+    public List<FixModel> getAll() {
+        return fixRepository.findAll();
+    }
+
+//    @GetMapping
+//    public Page<FixResponseDto> getPageable(Pageable pageable) {
+//        return fixRepository.findAll(pageable).map(FixResponseDto::new);
+//    }
 }

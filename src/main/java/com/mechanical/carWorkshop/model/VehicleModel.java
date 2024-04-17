@@ -21,9 +21,13 @@ public class VehicleModel {
     @Column(nullable = false)
     private String ano;
 
+    @Column(nullable = false)
+    private String cor;
+
     public VehicleModel(VehicleDto dados){
         this.marca = dados.marca();
         this.modelo = dados.modelo();
         this.ano = dados.ano();
+        this.cor = dados.cor();
     }
 }
