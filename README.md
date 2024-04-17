@@ -69,12 +69,8 @@
 {
     "entrada": "dd/mm/aaaa",
     "saida": "dd/mm/aaaa",
-    "mecanico": {
-        "nome": "string"
-    },
-    "veiculo": {
-        "marca": "string",
-        "modelo": "string"
-    }
+    "nomeMecanico": "string",
+    "modeloVeiculo" "string",
+    "marcaVeiculo": "string"
 }
 ```
