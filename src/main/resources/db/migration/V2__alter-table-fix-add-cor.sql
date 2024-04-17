@@ -1,0 +1,1 @@
+alter table fix add cor varchar(100);

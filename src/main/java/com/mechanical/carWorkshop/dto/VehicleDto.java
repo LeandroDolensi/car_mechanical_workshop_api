@@ -1,4 +1,19 @@
 package com.mechanical.carWorkshop.dto;
 
-public record VehicleDto(String marca, String modelo, Integer ano) {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
+public record VehicleDto(
+
+        @NotBlank
+        String marca,
+
+        @NotBlank
+        String modelo,
+
+        @NotBlank
+        @Pattern(regexp="\\d{4}")
+        String ano,
+
+        String cor) {
 }
