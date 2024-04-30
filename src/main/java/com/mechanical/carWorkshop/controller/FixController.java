@@ -2,6 +2,7 @@ package com.mechanical.carWorkshop.controller;
 
 import com.mechanical.carWorkshop.dto.FixRequestDto;
 import com.mechanical.carWorkshop.dto.FixResponseDto;
+import com.mechanical.carWorkshop.dto.FixUpdateDto;
 import com.mechanical.carWorkshop.model.FixModel;
 import com.mechanical.carWorkshop.repository.FixRepository;
 import jakarta.transaction.Transactional;
@@ -51,9 +52,18 @@ public class FixController {
         }
     }
 
+    @PutMapping
+    @Transactional
+    public ResponseEntity<FixResponseDto> update(@RequestBody @Valid FixUpdateDto fixDto) {
+        FixModel fix = fixRepository.getReferenceById(fixDto.id());
+        fix.update(fixDto);
+
+        return ResponseEntity.ok(new FixResponseDto(fix));
+    }
+
     @Transactional
     @DeleteMapping("/{id}")
-    public void excluir(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) {
         FixModel fix = fixRepository.getReferenceById(id);
         fix.excluir();
     }

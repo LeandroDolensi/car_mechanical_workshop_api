@@ -1,11 +1,9 @@
 package com.mechanical.carWorkshop.model;
 
 import com.mechanical.carWorkshop.dto.FixRequestDto;
+import com.mechanical.carWorkshop.dto.FixUpdateDto;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Table(name="fix")
 @Entity(name = "Fix")
@@ -22,6 +20,7 @@ public class FixModel {
     @Column(nullable = false)
     private String entrada;
 
+    @Setter
     @Column(nullable = false)
     private String saida;
 
@@ -45,5 +44,17 @@ public class FixModel {
 
     public void excluir() {
         this.ativo = false;
+    }
+
+    public void update(FixUpdateDto fixDto) {
+//        String saida,
+//        String nomeMecanico,
+//        Integer anos_exp
+        if(fixDto.saida() != null) {
+            this.setSaida(fixDto.saida());
+        }
+        if(fixDto.mecanico() != null) {
+            this.mecanico.update(fixDto.mecanico());
+        }
     }
 }
