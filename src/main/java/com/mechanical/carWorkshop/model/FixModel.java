@@ -33,10 +33,17 @@ public class FixModel {
     @Column(nullable = false)
     private VehicleModel veiculo;
 
+    private Boolean ativo;
+
     public FixModel(FixRequestDto dados) {
+        this.ativo = true;
         this.entrada = dados.entrada();
         this.saida = dados.saida();
         this.mecanico = new MechanicModel(dados.mecanico());
         this.veiculo = new VehicleModel(dados.veiculo());
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }

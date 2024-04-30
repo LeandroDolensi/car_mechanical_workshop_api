@@ -29,11 +29,18 @@ public class FixController {
     @GetMapping
     @RequestMapping("simple")
     public List<FixResponseDto> getAll() {
-        return fixRepository.findAll().stream().map(FixResponseDto::new).toList();
+        return fixRepository.findAllByAtivoTrue().stream().map(FixResponseDto::new).toList();
     }
 
     @GetMapping
     public Page<FixModel> getPageable(Pageable pageable) {
         return fixRepository.findAll(pageable);
+    }
+
+    @Transactional
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable Long id) {
+        FixModel fix = fixRepository.getReferenceById(id);
+        fix.excluir();
     }
 }
