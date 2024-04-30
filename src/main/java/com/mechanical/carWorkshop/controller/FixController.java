@@ -9,9 +9,11 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("fix")
@@ -35,6 +37,18 @@ public class FixController {
     @GetMapping
     public Page<FixModel> getPageable(Pageable pageable) {
         return fixRepository.findAll(pageable);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<FixModel> getFixById(@PathVariable Long id) {
+        Optional<FixModel> fixOptional = fixRepository.findById(id);
+        if (fixOptional.isPresent()) {
+            FixModel fix = fixOptional.get();
+            return ResponseEntity.ok(fix);
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @Transactional
