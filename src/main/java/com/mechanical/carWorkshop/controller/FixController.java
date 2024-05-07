@@ -32,18 +32,17 @@ public class FixController {
         fixRepository.save(fix);
         var uri = uriBuilder.path("/fix/{id}").buildAndExpand(fix.getId()).toUri();
         return ResponseEntity.created(uri).body( new FixCompleteResponseDto(fix) );
-
     }
 
     @GetMapping
     @RequestMapping("simple")
-    public List<FixSimpleResponseDto> getAll() {
-        return fixRepository.findAllByAtivoTrue().stream().map(FixSimpleResponseDto::new).toList();
+    public ResponseEntity<List<FixSimpleResponseDto>> getAll() {
+        return ResponseEntity.ok(fixRepository.findAllByAtivoTrue().stream().map(FixSimpleResponseDto::new).toList());
     }
 
     @GetMapping
-    public Page<FixModel> getPageable(Pageable pageable) {
-        return fixRepository.findAll(pageable);
+    public ResponseEntity<Page<FixModel>> getPageable(Pageable pageable) {
+        return ResponseEntity.ok(fixRepository.findAll(pageable));
     }
 
     @GetMapping("/{id}")
